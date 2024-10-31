@@ -17,7 +17,6 @@ export interface BookingData {
 const TimeSeriesChart = () => {
   const { visitorData, filteredData } = useVisitorData();
 
-  // Determine which data to use (filtered or unfiltered)
   const activeData = filteredData.length > 0 ? filteredData : visitorData;
 
   const [chartData, setChartData] = useState({
@@ -64,7 +63,7 @@ const TimeSeriesChart = () => {
   }, [activeData]);
 
   return (
-    <div>
+    <div style={{ width: "90%", marginInline: "auto" }}>
       <Chart options={chartData.options} series={chartData.series} type="line" height={350} width={"600px"} />
     </div>
   );

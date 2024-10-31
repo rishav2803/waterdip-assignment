@@ -102,7 +102,7 @@ const ColumnChart = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: "90%", marginInline: "auto" }}>
       <Chart
         options={chartOptions}
         series={[{ name: 'Visitors', data: chartData.counts }]}
