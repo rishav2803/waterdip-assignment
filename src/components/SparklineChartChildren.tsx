@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { useVisitorData } from '../contexts/VisitorDataContext';
@@ -9,7 +8,7 @@ interface AdultVisitorCountByDate {
   [key: string]: number;
 }
 
-const SparkLineChartAdult = () => {
+const SparkLineChartChildren = () => {
   const [chartData, setChartData] = useState<{ dates: string[]; counts: number[], totalCount: number }>({
     dates: [],
     counts: [],
@@ -31,7 +30,7 @@ const SparkLineChartAdult = () => {
       const date = dayjs(
         `${entry.arrival_date_year}-${monthToNumber(entry.arrival_date_month)}-${entry.arrival_date_day_of_month}`
       ).format('YYYY-MM-DD');
-      const totalVisitors = parseInt(entry.adults);
+      const totalVisitors = parseInt(entry.children);
       acc[date] = (acc[date] || 0) + totalVisitors;
 
       ctn += totalVisitors;
@@ -69,7 +68,7 @@ const SparkLineChartAdult = () => {
       }
     },
     subtitle: {
-      text: 'Total Adult visitors',
+      text: 'Total Children visitors',
       offsetX: 0,
       style: {
         fontSize: '14px',
@@ -89,4 +88,4 @@ const SparkLineChartAdult = () => {
   );
 };
 
-export default SparkLineChartAdult;
+export default SparkLineChartChildren;
