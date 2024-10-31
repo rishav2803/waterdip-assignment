@@ -1,0 +1,6 @@
+.card {
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  place-items:"center"
+}
+
