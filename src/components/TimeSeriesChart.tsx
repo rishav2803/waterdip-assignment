@@ -19,23 +19,41 @@ const TimeSeriesChart = () => {
 
   const activeData = filteredData.length > 0 ? filteredData : visitorData;
 
-  const [chartData, setChartData] = useState({
-    series: [{ name: 'Visitors', data: [] as { x: string; y: number }[] }],
-    options: {
-      chart: {
-        type: 'area',
-        stacked: false,
-        height: 350,
-        zoom: {
-          type: 'x',
-          enabled: true,
-          autoScaleYaxis: true
+  const [chartData, setChartData] = useState<
+    {
+      series: { name: string; data: { x: string; y: number }[] }[];
+      options: {
+        chart: {
+          type: 'area' | 'line' | 'bar' | 'pie' | 'donut' | 'radialBar' | 'scatter' | 'bubble' | 'heatmap' | 'candlestick' | 'boxPlot' | 'radar' | 'polarArea' | 'rangeBar' | 'rangeArea' | 'treemap';
+          stacked: boolean;
+          height: number;
+          zoom: {
+            type: 'x';
+            enabled: boolean;
+            autoScaleYaxis: boolean;
+          };
+        };
+        xaxis: { type: 'datetime' };
+        yaxis: { title: { text: string } };
+      };
+    }>
+    ({
+      series: [{ name: 'Visitors', data: [] as { x: string; y: number }[] }],
+      options: {
+        chart: {
+          type: 'area',
+          stacked: false,
+          height: 350,
+          zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
+          },
         },
+        xaxis: { type: 'datetime' },
+        yaxis: { title: { text: 'Number of Visitors' } },
       },
-      xaxis: { type: 'datetime' },
-      yaxis: { title: { text: 'Number of Visitors' } },
-    },
-  });
+    });
 
   function monthToNumber(mon: string) {
     return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
@@ -64,10 +82,9 @@ const TimeSeriesChart = () => {
 
   return (
     <div style={{ width: "90%", marginInline: "auto" }}>
-      <Chart options={chartData.options} series={chartData.series} type="line" height={350} width={"600px"} />
+      <Chart data-testid="apexchart" options={chartData.options} series={chartData.series} type="line" height={350} width={"600px"} />
     </div>
   );
 };
 
 export default TimeSeriesChart;
-

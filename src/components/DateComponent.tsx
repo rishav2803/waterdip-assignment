@@ -6,7 +6,7 @@ const DateComponent: React.FC = () => {
   const { startDate, endDate, setStartDate, setEndDate } = useVisitorData();
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "50%", marginTop: "2rem", marginLeft: "1.4rem" }}>
       <label>Start Date: </label>
       <input
         type="date"

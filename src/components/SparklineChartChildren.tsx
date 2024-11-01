@@ -1,3 +1,4 @@
+import React from "react"
 import { useEffect, useRef, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { useVisitorData } from '../contexts/VisitorDataContext';
@@ -43,7 +44,7 @@ const SparkLineChartChildren = () => {
     setChartData({ dates, counts, totalCount: ctn });
   }, [activeData]);
 
-  const chartOptions = {
+  const chartOptions: any = {
     chart: {
       type: 'area' as const,
       height: 350,
@@ -80,6 +81,7 @@ const SparkLineChartChildren = () => {
     <div style={{ width: "90%", marginInline: "auto" }}>
       <Chart
         options={chartOptions}
+        data-testid="apexchart"
         series={[{ name: 'Visitors', data: chartData.counts }]}
         type="area"
         height={350}

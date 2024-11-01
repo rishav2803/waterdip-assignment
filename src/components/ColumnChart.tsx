@@ -1,4 +1,4 @@
-
+import React from "react"
 import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { useVisitorData } from '../contexts/VisitorDataContext';
@@ -105,6 +105,7 @@ const ColumnChart = () => {
     <div style={{ width: "90%", marginInline: "auto" }}>
       <Chart
         options={chartOptions}
+        data-testid="apexchart"
         series={[{ name: 'Visitors', data: chartData.counts }]}
         type="bar"
         height={350}
